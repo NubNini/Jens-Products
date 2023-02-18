@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import data from "./productData.json"
+import "./App.css"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+type Product = {
+    productName: string
+    productImage: string
+    isSale: boolean
+    price: string
+    index: number
+    type: string
 }
 
-export default App;
+function App() {
+    return (
+        <div className="App">
+            <header className="App-header">
+                {data.map((product: Product) => {
+                    return (
+                        <div className="productCard">
+                           <div className="saleTag">{product.isSale && "sale"}</div>
+                            <img
+                                alt={`${product.productName}`}
+                                src={`/images/${product.productImage}`}
+                            />
+                            <div className="productDetails">
+                            <p> {product.productName}</p>
+                            <p>{product.price}</p>
+                            </div>
+                        </div>
+                    )
+                })}
+            </header>
+        </div>
+    )
+}
+
+export default App
