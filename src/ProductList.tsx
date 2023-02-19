@@ -1,7 +1,6 @@
 import React from "react"
-import data from "./productData.json"
 
-type ProductType = {
+ export type ProductType = {
     productName: string
     productImage: string
     isSale: boolean
@@ -10,31 +9,32 @@ type ProductType = {
     type: string
 }
 
-const ProductCard = ({ product }: {product: ProductType}) => {
+export type ProductListType = ProductType[];
+
+const ProductCard = (props: {product: ProductType}) => {
     return(
       <div className="productCard">
-          <div className="saleTag">{product.isSale && "sale"}</div>
+          <div className="saleTag">{props.product.isSale && "sale"}</div>
           <img
-              alt={`${product.productName}`}
-              src={`/images/${product.productImage}`}
+              alt={`${props.product.productName}`}
+              src={`/images/${props.product.productImage}`}
           />
           <div className="productDetails">
-              <p> {product.productName}</p>
-              <p>{product.price}</p>
+              <p> {props.product.productName}</p>
+              <p>{props.product.price}</p>
           </div>
       </div>
     )
   }
   
-  const ProductList = () => {
-      return (
+  const ProductList = (props: {productData: ProductListType}) => {
+ return (
           <div className="productContainer">
-              {data.map((product: ProductType) => {
+              {props.productData.map((product: ProductType) => {
                   return <ProductCard product={product} />
               })}
           </div>
       )
   }
 
-
-  export default ProductList
+  export default ProductList;
