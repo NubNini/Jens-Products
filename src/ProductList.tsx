@@ -12,7 +12,7 @@ export type ProductType = {
 
 export type ProductListType = ProductType[]
 
-const ProductCard = (props: { product: ProductType }) => {
+export const ProductCard = (props: { product: ProductType }) => {
     return (
         <div className="productCard">
             {props.product.isSale && (
