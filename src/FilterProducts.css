@@ -1,0 +1,8 @@
+.filterBanner .MuiFormControl-root {
+    margin: 0px !important;
+}
+@media screen and (max-width: 560px) {
+    .filterBanner .MuiFormControl-root {
+        width: 100%;
+    }
+}

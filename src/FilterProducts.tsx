@@ -7,10 +7,16 @@ import ListItemText from "@mui/material/ListItemText"
 import Select, { SelectChangeEvent } from "@mui/material/Select"
 import Checkbox from "@mui/material/Checkbox"
 import { ProductListType, ProductType } from "./ProductList"
+import "./FilterProducts.css"
 
-const FilterProducts = (props: { productData: ProductListType,  selectedTypes: string[], setSelectedTypes: any }) => {
-
-    const handleChange = (event: SelectChangeEvent<typeof props.selectedTypes>) => {
+const FilterProducts = (props: {
+    productData: ProductListType
+    selectedTypes: string[]
+    setSelectedTypes: any
+}) => {
+    const handleChange = (
+        event: SelectChangeEvent<typeof props.selectedTypes>
+    ) => {
         const {
             target: { value },
         } = event
@@ -26,13 +32,10 @@ const FilterProducts = (props: { productData: ProductListType,  selectedTypes: s
 
     const deduplicatedTypes = [...new Set(productTypesArray)]
 
-
     return (
         <div>
             <FormControl sx={{ m: 1, width: 300 }}>
-                <InputLabel id="multiple-checkbox-label">
-                    Filter
-                </InputLabel>
+                <InputLabel id="multiple-checkbox-label">Filter</InputLabel>
                 <Select
                     labelId="multiple-checkbox-label"
                     id="multiple-checkbox"
@@ -46,7 +49,9 @@ const FilterProducts = (props: { productData: ProductListType,  selectedTypes: s
                         return (
                             <MenuItem key={type} value={type}>
                                 <Checkbox
-                                    checked={props.selectedTypes.indexOf(type) > -1}
+                                    checked={
+                                        props.selectedTypes.indexOf(type) > -1
+                                    }
                                 />
                                 <ListItemText primary={type} />
                             </MenuItem>

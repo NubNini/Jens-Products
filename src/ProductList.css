@@ -28,7 +28,6 @@
 .productContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* margin: 100px; */
     gap: 50px;
     justify-content: center;
     width: 100%;
@@ -37,4 +36,27 @@
 
 .productImage {
     width: 200px;
+}
+
+@media screen and (max-width: 560px) {
+    .productContainer {
+        grid-template-columns: 1fr;
+    }
+
+    .productCard {
+        border: 1px solid black;
+    }
+}
+
+@media screen and (min-width: 560px) and (max-width: 1024px) {
+    .productContainer {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .productContainer {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
